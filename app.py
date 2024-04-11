@@ -5,12 +5,16 @@ import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.image import MIMEImage
+from dotenv import load_dotenv
+import os
 
+# Load variables from .env file
+load_dotenv()
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your_secret_key'
 
-GMAIL_USERNAME = 'votrinhnhan1403@gmail.com'  # Your Gmail username
-GMAIL_PASSWORD = 'xuzy egdc brrw jbef'  # Your Gmail password (make sure to keep it secure)
+GMAIL_USERNAME =  os.environ.get('GMAIL_USERNAME')
+GMAIL_PASSWORD = os.environ.get('GMAIL_PASSWORD')
 
 @app.route('/')
 def index():
